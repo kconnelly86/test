@@ -11,7 +11,6 @@ var authkey = 'ue9726cb7ce98ade'; //replace with your authkey
 cbt.start({"username":username,"authkey": authkey,"dir":"~/Bootcamp/portfolio"}, function(err){ if(!err) console.log("ALIVE") 
 driver.getSession().then(function(session){
     sessionId = session.id_; //need for API calls
-    //cbt.start({"username":username,"authkey": authkey,"dir":"~/Bootcamp/portfolio"}, function(err){ if(!err) console.log("ALIVE")});//specifying the 'root' directory that this web server points to.
     console.log('Session ID: ', sessionId);
     console.log('See your test run at: https://app.crossbrowsertesting.com/selenium/' + sessionId);
     //driver.findElement(webdriver.By.id("linked")).click();//grabbing the id linked to click it and test.
@@ -48,30 +47,9 @@ var driver = new webdriver.Builder()
 // Async functions outside of driver can use call() function.
 console.log('Waiting on the browser to be launched and the session to start');
 
-/*driver.getSession().then(function(session){
-
-    sessionId = session.id_; //need for API calls
-    //cbt.start({"username":username,"authkey": authkey,"dir":"~/Bootcamp/portfolio"}, function(err){ if(!err) console.log("ALIVE")});//specifying the 'root' directory that this web server points to.
-    console.log('Session ID: ', sessionId);
-    console.log('See your test run at: https://app.crossbrowsertesting.com/selenium/' + sessionId);
-    driver.get('http://local/index.html');//loading my url for my static site.
-    //driver.findElement(webdriver.By.id("linked")).click();//grabbing the id linked to click it and test.
-});*/
-
 //load your URL
-//driver.get('http://crossbrowsertesting.github.io/login-form.html');
 //driver.get('http://local/index.html');
 
-//Kyle
-//Local HTML File to host the static site.
-//cbt.start({"username":username,"authkey": authkey,"dir":"~/Bootcamp/portfolio"}, function(err){ if(!err) console.log("ALIVE")});
-//driver.get('http://local/index.html');
-
-//take snapshot via cbt api
-driver.call(takeSnapshot);
-
-//take snapshot via cbt api
-driver.call(takeSnapshot);
 
 //Check title
 driver.getTitle().then(function (title){
