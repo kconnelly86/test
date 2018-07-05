@@ -8,6 +8,17 @@ var remoteHub = 'http://hub.crossbrowsertesting.com:80/wd/hub';
 var username = 'kconnelly1986@gmail.com'; //replace with your email address
 var authkey = 'ue9726cb7ce98ade'; //replace with your authkey
 
+cbt.start({"username":username,"authkey": authkey,"dir":"~/Bootcamp/portfolio"}, function(err){ if(!err) console.log("ALIVE") 
+driver.getSession().then(function(session){
+    sessionId = session.id_; //need for API calls
+    //cbt.start({"username":username,"authkey": authkey,"dir":"~/Bootcamp/portfolio"}, function(err){ if(!err) console.log("ALIVE")});//specifying the 'root' directory that this web server points to.
+    console.log('Session ID: ', sessionId);
+    console.log('See your test run at: https://app.crossbrowsertesting.com/selenium/' + sessionId);
+    //driver.findElement(webdriver.By.id("linked")).click();//grabbing the id linked to click it and test.
+});
+driver.get('http://local/index.html');//loading my url for my static site.
+});//specifying the 'root' directory that this web server points to.
+
 var caps = {
     name : 'Challenge',
     //build :  '1.0',
@@ -37,19 +48,19 @@ var driver = new webdriver.Builder()
 // Async functions outside of driver can use call() function.
 console.log('Waiting on the browser to be launched and the session to start');
 
-driver.getSession().then(function(session){
+/*driver.getSession().then(function(session){
 
     sessionId = session.id_; //need for API calls
-    cbt.start({"username":username,"authkey": authkey,"dir":"~/Bootcamp/portfolio"}, function(err){ if(!err) console.log("ALIVE")});//specifying the 'root' directory that this web server points to.
+    //cbt.start({"username":username,"authkey": authkey,"dir":"~/Bootcamp/portfolio"}, function(err){ if(!err) console.log("ALIVE")});//specifying the 'root' directory that this web server points to.
     console.log('Session ID: ', sessionId);
     console.log('See your test run at: https://app.crossbrowsertesting.com/selenium/' + sessionId);
-    //driver.get('http://local/index.html');//loading my url for my static site.
+    driver.get('http://local/index.html');//loading my url for my static site.
     //driver.findElement(webdriver.By.id("linked")).click();//grabbing the id linked to click it and test.
-});
+});*/
 
 //load your URL
 //driver.get('http://crossbrowsertesting.github.io/login-form.html');
-driver.get('http://local/index.html');
+//driver.get('http://local/index.html');
 
 //Kyle
 //Local HTML File to host the static site.
@@ -58,9 +69,6 @@ driver.get('http://local/index.html');
 
 //take snapshot via cbt api
 driver.call(takeSnapshot);
-
- //find linked in icon and click it
-//driver.findElement(webdriver.By.id("linked")).click();
 
 //take snapshot via cbt api
 driver.call(takeSnapshot);
@@ -72,6 +80,11 @@ driver.getTitle().then(function (title){
     }
     console.log("The current title is: " + title);
 });
+
+//find linked in icon and click it
+//driver.findElement(webdriver.By.id("linked")).click();
+//driver.find_element_by_xpath('//*[@id="linked"]').click();
+//driver.findElement(webdriver.By.xpath('//*[@id="linked"]')).click();
 
 //quit the driver
 //driver.quit();
@@ -173,10 +186,10 @@ function webdriverErrorHandler(err){
 
     //if we had a session, end it and mark failed
     if (driver && sessionId){
-        driver.quit();
+        //driver.quit();
         setScore('fail').then(function(result){
             console.log('set score to fail')
-            cbt.stop();//kills tunnel if test fails.
+            //cbt.stop();//kills tunnel if test fails.
         })
     }
 }
