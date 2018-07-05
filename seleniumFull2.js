@@ -52,13 +52,18 @@ cbt.start({"username":username,"authkey": authkey,"dir":"/Users/smokey0586/Bootc
                 throw Error('Unexpected title: ' + title);
             }
             console.log("The current title is: " + title);
+            if (driver.findElement(webdriver.By.xpath('//*[@id="linked"]')).click()) {
+                console.log('LinkedIn was successfully clicked.');
+            }else {
+                throw Error('LinkedIn was not successfully clicked.');
+            }
         });
 
         driver.quit();
         //set the score as passing
         driver.call(setScore, null, 'pass').then(function(result){
             console.log('set score to pass');
-            //cbt.stop();//only kills tunnel if score is passing.
+            cbt.stop();//only kills tunnel if score is passing.
         });
 
 
@@ -110,10 +115,10 @@ cbt.start({"username":username,"authkey": authkey,"dir":"/Users/smokey0586/Bootc
 
             //if we had a session, end it and mark failed
             if (driver && sessionId){
-                //driver.quit();
+                driver.quit();
                 setScore('fail').then(function(result){
                     console.log('set score to fail')
-                    //cbt.stop();//kills tunnel if test fails.
+                    cbt.stop();//kills tunnel if test fails.
                 })
             }
         }
