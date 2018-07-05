@@ -8,7 +8,7 @@ var remoteHub = 'http://hub.crossbrowsertesting.com:80/wd/hub';
 var username = 'kconnelly1986@gmail.com'; //replace with your email address
 var authkey = 'ue9726cb7ce98ade'; //replace with your authkey
 
-cbt.start({"username":username,"authkey": authkey,"dir":"~/Bootcamp/portfolio"}, function(err){ if(!err) console.log("ALIVE") 
+cbt.start({"username":username,"authkey": authkey,"dir":"/Users/smokey0586/Bootcamp/portfolio/"}, function(err){ if(!err) console.log("ALIVE") 
 driver.getSession().then(function(session){
     sessionId = session.id_; //need for API calls
     console.log('Session ID: ', sessionId);

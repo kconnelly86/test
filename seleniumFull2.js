@@ -10,7 +10,7 @@ var authkey = 'ue9726cb7ce98ade'; //replace with your authkey
 var sessionId = null;
 
 
-cbt.start({"username":username,"authkey": authkey,"dir":"~/Bootcamp/portfolio/"}, function(err){ 
+cbt.start({"username":username,"authkey": authkey,"dir":"/Users/smokey0586/Bootcamp/portfolio/"}, function(err){ 
     if(!err){ console.log("ALIVE") 
         var caps = {
             name : 'Challenge',
@@ -48,7 +48,7 @@ cbt.start({"username":username,"authkey": authkey,"dir":"~/Bootcamp/portfolio/"}
 
         //Check title
         driver.getTitle().then(function (title){
-            if (title !== ('local')) {
+            if (title !== ('Kyle Connelly')) {
                 throw Error('Unexpected title: ' + title);
             }
             console.log("The current title is: " + title);
