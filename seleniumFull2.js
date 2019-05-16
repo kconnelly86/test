@@ -5,8 +5,8 @@ var request = require('request');
 var cbt = require("cbt_tunnels");
 var remoteHub = 'http://hub.crossbrowsertesting.com:80/wd/hub';
 
-var username = 'kconnelly1986@gmail.com'; //replace with your email address
-var authkey = 'ue9726cb7ce98ade'; //replace with your authkey
+var username = ' kylec@crossbrowsertesting.com'; //replace with your email address
+var authkey = 'uf9b1ea5840afd70'; //replace with your authkey
 var sessionId = null;
 
 
