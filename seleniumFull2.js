@@ -5,24 +5,23 @@ var request = require('request');
 var cbt = require("cbt_tunnels");
 var remoteHub = 'http://hub.crossbrowsertesting.com:80/wd/hub';
 
-var username = ' kylec@crossbrowsertesting.com'; //replace with your email address
+var username = 'kylec@crossbrowsertesting.com'; //replace with your email address
 var authkey = 'uf9b1ea5840afd70'; //replace with your authkey
 var sessionId = null;
 
 
-cbt.start({"username":username,"authkey": authkey,"dir":"/Users/smokey0586/Bootcamp/portfolio/"}, function(err){ 
-    if(!err){ console.log("ALIVE") 
+cbt.start({"username":username,"authkey": authkey,"acceptAllCerts":true,"dir":"/Users/kyle.connelly/junkTest"}, function(err){ 
+    if(!err){ console.log("Tunnel Alive") 
         var caps = {
-            name : 'Challenge',
-            //build :  '1.0',
-            version : '59x64',
-            platform : 'Mac OSX 10.12',
-            screen_resolution : '1024x768',
+            name : 'CBT Tunnel Test',
+            version : '74x64',
+            platform : 'Windows 10',
+            screen_resolution : '1366x768',
             record_video : 'true',
             record_network : 'false',
             browserName : 'Chrome',
             username : username,
-            password : authkey
+            password : authkey     
         };
 
         //register general error handler
@@ -43,20 +42,21 @@ cbt.start({"username":username,"authkey": authkey,"dir":"/Users/smokey0586/Bootc
             console.log('Session ID: ', sessionId);
             console.log('See your test run at: https://app.crossbrowsertesting.com/selenium/' + sessionId);
         });
-        driver.get('http://local/index.html');//loading my url for my static site.
+        //if its for internal site use "localhost" if its for html use "local"
+        driver.get('http://local/junk.html');//loading my url for my static site.
     
 
         //Check title
         driver.getTitle().then(function (title){
-            if (title !== ('Kyle Connelly')) {
+            if (title !== ('Tunnel Testing')) {
                 throw Error('Unexpected title: ' + title);
             }
             console.log("The current title is: " + title);
-            if (driver.findElement(webdriver.By.xpath('//*[@id="linked"]')).click()) {
-                console.log('LinkedIn was successfully clicked.');
-            }else {
-                throw Error('LinkedIn was not successfully clicked.');
-            }
+            // if (driver.findElement(webdriver.By.xpath('//*[@id="linked"]')).click()) {
+            //     console.log('LinkedIn was successfully clicked.');
+            // }else {
+            //     throw Error('LinkedIn was not successfully clicked.');
+            // }
         });
 
         driver.quit();

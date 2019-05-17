@@ -10,11 +10,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cbt_tunnels": "^0.9.4",
+    "@types/node": "^12.0.2",
+    "cbt_tunnels": "^0.9.9",
     "express": "^4.16.2",
-    "npm": "^6.1.0",
     "request": "^2.87.0",
     "require": "^2.4.20",
-    "selenium-webdriver": "^3.6.0"
+    "selenium-webdriver": "3.6.0",
+    "tough-cookie": "^3.0.1"
   }
 }
